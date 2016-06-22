@@ -29,6 +29,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import org.omg.SendingContext.RunTime;
+
 public abstract class Downloader extends Observable implements Runnable{
 	
 	// Member variables
@@ -58,7 +60,7 @@ public abstract class Downloader extends Observable implements Runnable{
 	
 	// Contants for block and buffer size
 	protected static final int BLOCK_SIZE = 4096;
-	protected static final int BUFFER_SIZE = 4096;
+	protected static final int BUFFER_SIZE = 10240; //10 Kb
 	protected static final int MIN_DOWNLOAD_SIZE = BLOCK_SIZE * 100;
 	
 	// These are the status names.
@@ -148,6 +150,7 @@ public abstract class Downloader extends Observable implements Runnable{
 	 * Set the state of the downloader
 	 */
 	protected void setState(int value) {
+		//if(value == ERROR) Thread.dumpStack();
 		mState = value;
 		stateChanged();
 	}

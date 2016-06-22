@@ -46,6 +46,10 @@ public class DownloadManagerGUI extends javax.swing.JFrame implements Observer{
 	
 	private boolean mIsClearing;
 	
+	static{
+		ProxyUtils.initSystemProxy();
+	}
+	
 	/** Creates new form DownloadManagerGUI */
     public DownloadManagerGUI() {
     	mTableModel = new DownloadTableModel();
